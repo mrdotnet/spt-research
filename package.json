@@ -1,9 +1,9 @@
 {
-  "name": "perpetua",
+  "name": "spt-deep",
   "version": "1.0.0",
-  "description": "Perpetua - The Infinite Thought Engine",
+  "description": "SPT-Deep - The Infinite Thought Engine",
   "main": "dist/main/main/index.js",
-  "author": "Perpetua Team",
+  "author": "SmartPoints Team",
   "license": "MIT",
   "scripts": {
     "dev": "concurrently \"npm run dev:vite\" \"npm run dev:electron\"",
@@ -14,16 +14,22 @@
     "build:main": "tsc -p tsconfig.main.json",
     "package": "npm run build && electron-builder",
     "package:mac": "npm run build && electron-builder --mac",
+    "package:win": "npm run build && electron-builder --win",
+    "package:linux": "npm run build && electron-builder --linux",
     "package:dir": "npm run build && electron-builder --dir",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "test:coverage": "vitest --coverage"
+    "test:coverage": "vitest --coverage",
+    "deploy:azure": "powershell -ExecutionPolicy Bypass -File scripts/deploy-azure.ps1",
+    "deploy:coder": "powershell -ExecutionPolicy Bypass -File scripts/deploy-coder-template.ps1",
+    "workspace:create": "powershell -ExecutionPolicy Bypass -File scripts/create-workspace.ps1"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.67.0",
+    "@azure/identity": "^4.0.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-scroll-area": "^1.0.5",
@@ -101,8 +107,8 @@
     "wait-on": "^7.2.0"
   },
   "build": {
-    "appId": "com.perpetua.app",
-    "productName": "Perpetua",
+    "appId": "tech.smartpoints.spt-deep",
+    "productName": "SPT-Deep",
     "asar": false,
     "directories": {
       "buildResources": "build",

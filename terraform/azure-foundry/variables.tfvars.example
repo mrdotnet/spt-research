@@ -1,0 +1,24 @@
+# Azure AI Foundry Configuration for Perpetua
+# Copy this file to terraform.tfvars and fill in your values
+
+# Azure Region
+location = "eastus2"
+
+# Environment (dev, staging, prod)
+environment = "dev"
+
+# Project name (used in resource naming)
+project_name = "perpetua"
+
+# GitHub token for Azure AI inference serverless API (Claude models)
+# Get this from: https://github.com/settings/tokens
+# Required scope: read:org (for Azure AI inference)
+github_token = "ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# Tags
+tags = {
+  Project     = "Perpetua"
+  ManagedBy   = "Terraform"
+  Application = "AI-Exploration-Engine"
+  Owner       = "your-email@example.com"
+}
